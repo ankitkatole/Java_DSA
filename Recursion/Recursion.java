@@ -55,7 +55,7 @@ public class Recursion {
         if(arr[i] != key){
             return firstOccurence(arr, key, i+1);
         }
-        return i+1;
+        return i;
     }
 
     public static int binarySearch(int arr[],int key,int low,int high){
@@ -73,10 +73,28 @@ public class Recursion {
             return binarySearch(arr, key, mid+1, high);
         }
     }
+
+    public static int power(int x,int n){
+        if( n == 0)
+            return 1;
+        return x*power(x,n-1);
+    }
+
+    public static int optimizedPower(int x,int n){
+        if(n==0){
+            return 1;
+        }
+        int halfPower = optimizedPower(x,n/2);
+        halfPower *= halfPower;
+        if(n%2 != 0){
+            return x*halfPower;
+        }
+        return halfPower;   
+    }
     public static void main(String[] args) {
         int[] arr = {1,1,3,4,5,6};
         // System.out.println(firstOccurence(arr, 3, 0));
-        System.out.println(binarySearch(arr, 4, 0, arr.length-1));
-        
+        // System.out.println(binarySearch(arr, 4, 0, arr.length-1));
+        System.out.println(optimizedPower(2,5));
     }
 }
