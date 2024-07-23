@@ -52,6 +52,8 @@ public class MajoritElements {
         }
         return count;
     }
+
+    
     public static void main(String[] args) {
         int nums[] = {3,2,3};
         System.out.println("Majority Element "+ majorityElement(nums));
