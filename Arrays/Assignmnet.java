@@ -56,47 +56,47 @@ public class Assignmnet {
      * Input: nums = [1], target = 0
      * Output: -1
      */
-    public static int searchTarget(int arr[],int target){
+    public static int searchTarget(int arr[], int target) {
         int minimum = searchMin(arr);
         int low = 0;
-        int high = arr.length-1;
-        if(arr[minimum] <= target && target <= arr[high]){
+        int high = arr.length - 1;
+        if (arr[minimum] <= target && target <= arr[high]) {
             return binarySearch(arr, minimum, high, target);
-        }else{
+        } else {
             return binarySearch(arr, low, minimum, target);
         }
     }
 
-    public static int binarySearch(int arr[],int low, int high, int key){
-        while(low<=high){
-            int mid = low+(high-low)/2;
-            if(arr[mid] == key){return mid;}
-            else if(arr[mid] > key){
-                high = mid-1;
-        }
-        else{
-            low = mid+1;
-        }
+    public static int binarySearch(int arr[], int low, int high, int key) {
+        while (low <= high) {
+            int mid = low + (high - low) / 2;
+            if (arr[mid] == key) {
+                return mid;
+            } else if (arr[mid] > key) {
+                high = mid - 1;
+            } else {
+                low = mid + 1;
+            }
         }
         return -1;
     }
 
-    public static int searchMin(int arr[]){
+    public static int searchMin(int arr[]) {
         int low = 0;
-        int high = arr.length -1;
-        while(low<high){
-            int mid = low+(high-low)/2;
-            if(mid > 0 && arr[mid-1] > arr[mid]){
+        int high = arr.length - 1;
+        while (low < high) {
+            int mid = low + (high - low) / 2;
+            if (mid > 0 && arr[mid - 1] > arr[mid]) {
                 return mid;
-            }
-            else if(arr[mid]>= arr[low] && arr[mid]> arr[high]){
-                low= mid+1;
-            }else{
-                high = mid-1;
+            } else if (arr[mid] >= arr[low] && arr[mid] > arr[high]) {
+                low = mid + 1;
+            } else {
+                high = mid - 1;
             }
         }
         return low;
     }
+
 
     public static void main(String[] args) {
         // int num[] = { 1, 2, 3, 1 };
@@ -104,10 +104,10 @@ public class Assignmnet {
         // int num2[] = { 1, 2, 3, 4 };
         // System.out.println(checkDuplicates(num2));
 
-        int nums3[] = {4,5,6,7,0,1,2};
+        int nums3[] = { 4, 5, 6, 7, 0, 1, 2 };
         int target = 0;
         System.out.println(searchTarget(nums3, target));
-        int nums4[] = {4,5,6,7,0,1,2};
+        int nums4[] = { 4, 5, 6, 7, 0, 1, 2 };
         System.out.println(searchTarget(nums4, 3));
     }
 }
