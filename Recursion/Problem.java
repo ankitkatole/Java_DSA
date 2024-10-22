@@ -68,6 +68,6 @@ public class Problem {
         // System.out.println(tillingProblem(5));
         // System.out.println(optimizedTillingProblem(5));
         // System.out.println(pairingFriends(4));
-        printBinStrings(3,0,"");
+        // printBinStrings(3,0,"");
     }
 }
