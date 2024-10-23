@@ -3,7 +3,6 @@
 <p align="center">
   <img src="https://img.shields.io/badge/Java-17-orange" alt="Java Version">
   <img src="https://img.shields.io/badge/DSA-Algorithms-blue" alt="DSA">
-  <img src="https://img.shields.io/github/license/ankitkatole/Java_DSA" alt="License">
 </p>
 
 <h2>📚 Welcome</h2>
@@ -55,8 +54,3 @@
   <li>Backtracking</li>
   <li>Advanced topics: Time Complexity, Space Complexity, and Optimizations</li>
 </ul>
-
-
-<h2>📝 License</h2>
-
-<p>This repository is licensed under the <a href="https://opensource.org/licenses/MIT">MIT License</a> - see the <a href="LICENSE">LICENSE</a> file for details.</p>
