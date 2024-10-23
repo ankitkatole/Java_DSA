@@ -22,9 +22,9 @@
 <ol>
   <li>Ensure you have <strong>Java 17</strong> (or later) installed on your system. You can download it from <a href="https://www.oracle.com/java/technologies/javase-downloads.html">here</a>.</li>
   <li>Clone this repository using Git:</li>
-  <pre><code>git clone https://github.com/yourusername/yourrepository.git</code></pre>
+  <pre><code>git clone https://github.com/ankitkatole/Java_DSA.git</code></pre>
   <li>Navigate to the project folder:</li>
-  <pre><code>cd yourrepository</code></pre>
+  <pre><code>cd Java_DSA</code></pre>
   <li>Run the Java files using your preferred IDE (such as IntelliJ IDEA, Eclipse, or VSCode) or from the command line:</li>
   <pre><code>javac filename.java</code></pre>
   <pre><code>java filename</code></pre>
