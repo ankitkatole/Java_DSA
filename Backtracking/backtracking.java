@@ -35,7 +35,7 @@ public class backtracking {
      //Find and print permutation of a string
      public static void findPermutation(String str, String ans){
         if(str.length() == 0){
-            System.out.println(ans);
+            System.out.print(ans+" ");
             return;
         }
         for (int i = 0; i < str.length(); i++) {
@@ -45,15 +45,85 @@ public class backtracking {
         }
      }
 
+
+    // (Grid ways) Find number of ways to reach from (0,0) to (N-1,M-1) in a N*M rid. ALlowed Moves are only right and down.
+     public static int gridWays(int grid[][],int startRow,int startCol){
+        if(startRow==grid.length-1 && startCol==grid[0].length-1){//Last Cell condn
+            return 1;
+        }
+        if(startRow>=grid.length || startCol>=grid[0].length){//Out of Bound condn
+            return 0;
+        }
+        
+        return gridWays(grid,startRow+1,startCol)+gridWays(grid,startRow,startCol+1);
+     }
+
+     //Helper function
+    public static int Factorial(int n) {
+        if (n == 1 || n == 0) {
+            return 1;
+        }
+        return n * Factorial(n - 1);
+    }
+
+    public static int optimizedGridWays(int n,int m){
+        return (Factorial(n-1+m-1)/(Factorial(n-1)*Factorial(m-1)));
+    }
     public static void main(String[] args) {
         int arr[] = new int[5];
         // changeArr(arr, 0, 1);
         // printArr(arr);
-        String str = "abc";
-        // findSubsets(str,"",0);
-        // System.out.println(count);
-        findPermutation(str, "");
 
+        System.out.println("Permutation:");
+        System.out.println("Permutations of 'abc':");
+        findPermutation("abc", "");
+    
+        System.out.println("\nPermutations of 'ab':");
+        findPermutation("ab", "");
+    
+        System.out.println("\nPermutations of 'a':");
+        findPermutation("a", "");
+    
+        System.out.println("\nPermutations of '':");
+        findPermutation("", "");
+    
+        System.out.println("\nPermutations of 'aab':");
+        findPermutation("aab", "");
+    
+        System.out.println("\nPermutations of 'abcd':");
+        findPermutation("abcd", "");
+
+        System.out.println();
+
+        System.out.println("Grid Ways:");
+        int[][] grid1 = new int[2][2];
+        System.out.println("Expected: 2, Actual: " + gridWays(grid1, 0, 0));
+        System.out.println("Expected: 2, Actual: " + optimizedGridWays(2,2));
+        
+    
+        int[][] grid2 = new int[3][3];
+        System.out.println("Expected: 6, Actual: " + gridWays(grid2, 0, 0));
+        System.out.println("Expected: 6, Actual: " + optimizedGridWays(3,3));
+    
+        int[][] grid3 = new int[3][4];
+        System.out.println("Expected: 10, Actual: " + gridWays(grid3, 0, 0));
+        System.out.println("Expected: 10, Actual: " + optimizedGridWays(3,4));
+    
+        int[][] grid4 = new int[4][4];
+        System.out.println("Expected: 20, Actual: " + gridWays(grid4, 0, 0));
+        System.out.println("Expected: 20, Actual: " + optimizedGridWays(4,4));
+    
+        int[][] grid5 = new int[1][5];
+        System.out.println("Expected: 1, Actual: " + gridWays(grid5, 0, 0));
+        System.out.println("Expected: 1, Actual: " + optimizedGridWays(1,5));
+    
+        int[][] grid6 = new int[5][1];
+        System.out.println("Expected: 1, Actual: " + gridWays(grid6, 0, 0));
+        System.out.println("Expected: 1, Actual: " + optimizedGridWays(5,1));
+    
+        int[][] grid7 = new int[4][5];
+        System.out.println("Expected: 35, Actual: " + gridWays(grid7, 0, 0));
+        System.out.println("Expected: 35, Actual: " + optimizedGridWays(4,5));
 
     }
 }
