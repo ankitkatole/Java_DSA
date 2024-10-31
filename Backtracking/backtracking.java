@@ -46,7 +46,7 @@ public class backtracking {
      }
 
 
-    // (Grid ways) Find number of ways to reach from (0,0) to (N-1,M-1) in a N*M rid. ALlowed Moves are only right and down.
+    // (Grid ways) Find number of ways to reach from (0,0) to (N-1,M-1) in a N*M grid. ALlowed Moves are only right and down.
      public static int gridWays(int grid[][],int startRow,int startCol){
         if(startRow==grid.length-1 && startCol==grid[0].length-1){//Last Cell condn
             return 1;
