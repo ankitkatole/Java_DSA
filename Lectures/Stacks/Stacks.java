@@ -128,8 +128,130 @@ public class Stacks{
         }
     }
 
-    
+    public static boolean validParenthesis(String s){
+        if(s.length()%2 != 0){
+            return false;
+        }
+        Stack<Character> st = new Stack<>();
 
+        for(int i = 0; i<s.length();i++){
+            char ch = s.charAt(i);
+            if(ch == '(' || ch == '{' || ch == '['){
+                st.push(ch);
+            }else{
+                if(st.isEmpty()){
+                    return false;
+                }
+                if((st.peek() == '(' && ch == ')') || (st.peek() == '{' && ch == '}') || (st.peek() == '[' && ch == ']')){
+                    st.pop();
+                }else{
+                    return false;
+                }
+            }
+        }
+
+        if(st.isEmpty()){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public static boolean duplicateParenthesis(String str){
+        Stack<Character> s = new Stack<>();
+        for(int i = 0;i<str.length();i++){
+            char ch = str.charAt(i);
+            if(ch != ')'){
+                s.push(ch);
+            }else{
+                if(s.peek() == '('){
+                    return true;
+                }else{
+                    while(s.peek() != '('){
+                        s.pop();
+                    }
+                    s.pop();
+                }
+            }
+        }
+        return false;
+    }
+
+    public static void maxArea(int arr[]){
+        int maxArea = 0;
+        int nsr[] = new int[arr.length];
+        int nsl[] = new int[arr.length];
+        Stack<Integer> s = new Stack<>();
+        for(int i = arr.length-1;i>=0;i--){
+            while((!s.isEmpty()) && arr[s.peek()] >= arr[i]){
+                s.pop();
+            }
+            if(s.isEmpty()){
+                nsr[i] = arr.length;
+            }else{
+                nsr[i] = s.peek();
+            }
+            s.push(i);
+        }
+
+        s = new Stack<>();
+        for(int i = 0;i<arr.length;i++){
+            while((!s.isEmpty()) && arr[s.peek()] >= arr[i]){
+                s.pop();
+            }
+            if(s.isEmpty()){
+                nsl[i] = -1;
+            }else{
+                nsl[i] = s.peek();
+            }
+            s.push(i);
+        }
+
+        for(int i= 0; i<arr.length;i++){
+            int h = arr[i];
+            int w = nsr[i]-nsl[i]-1;
+            maxArea = Math.max(maxArea, h*w);
+        }
+        System.out.println("Maximum area is "+maxArea);
+    }
+
+    public static int largestRectangleArea(int[] heights) {
+        int max = 0;
+        int nsl[] = new int[heights.length];
+        int nsr[] = new int[heights.length];
+        Stack<Integer> s = new Stack<>();
+
+        for(int i = 0;i<heights.length;i++){
+            while((!s.isEmpty()) && (heights[s.peek()] >= heights[i])){
+                s.pop();
+            }
+            if(s.isEmpty()){
+                nsl[i] = -1;
+            }else{
+                nsl[i] = s.peek();
+            }
+            s.push(i);
+        }
+        s = new Stack<>();
+        for(int i = heights.length-1;i>=0;i--){
+            while((!s.isEmpty()) && (heights[s.peek()]  >= heights[i])){
+                s.pop();
+            }
+            if(s.isEmpty()){
+                nsr[i] = heights.length;
+            }else{
+                nsr[i] = s.peek();
+            }
+            s.push(i);
+        }
+
+        for(int i = 0;i<heights.length;i++){
+            int h = heights[i];
+            int w = nsr[i]-nsl[i]-1;
+            max = Math.max(max,h*w);
+        }
+        return max;
+    }
     public static void main(String[] args) {
         // StackL s = new StackL();
         // s.push(1);
@@ -167,5 +289,12 @@ public class Stacks{
         for(int i = 0;i<res.length;i++){
             System.out.print(res[i]+" ");
         }
+        System.out.println();
+        System.out.println(validParenthesis("({[}])[]"));
+        System.out.println(duplicateParenthesis("((a+b)+(c+d))"));
+
+        int height[] = {2,1,5,6,2,3};
+        maxArea(height);
+        System.out.println(largestRectangleArea(height));
     }
 }
