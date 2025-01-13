@@ -72,19 +72,21 @@ public class Assignments {
         return new String(result);
     }
 
-//Question 4 :
-// Best Time to Buy and Sell Stock
-// Given an array prices[] of length N, representing the prices of the stocks on different days, the
-// task is to nd the maximum prot possible for buying and selling the stocks on different days
-// using transactions where at most one transaction is allowed.
-// Note: Stock must be bought before being sold.
-// Sample Input 1 : prices[] = {7, 6, 4, 3, 1}
-// Sample Output 1 : 0
-// Sample Input 2 : prices[] = {7, 1, 5, 3, 6, 4]
-// Sample Output 2 : 5
+    // Question 4 :
+    // Best Time to Buy and Sell Stock
+    // Given an array prices[] of length N, representing the prices of the stocks on
+    // different days, the
+    // task is to nd the maximum prot possible for buying and selling the stocks on
+    // different days
+    // using transactions where at most one transaction is allowed.
+    // Note: Stock must be bought before being sold.
+    // Sample Input 1 : prices[] = {7, 6, 4, 3, 1}
+    // Sample Output 1 : 0
+    // Sample Input 2 : prices[] = {7, 1, 5, 3, 6, 4]
+    // Sample Output 2 : 5
     public static int bestTimeToBuyAndSellStock(int[] prices) {
         int minPrice = Integer.MAX_VALUE, maxProfit = 0;
-        for(int i = 0;i<prices.length;i++){
+        for (int i = 0; i < prices.length; i++) {
             minPrice = Math.min(minPrice, prices[i]);
             int todayProfit = prices[i] - minPrice;
             maxProfit = Math.max(maxProfit, todayProfit);
@@ -92,28 +94,32 @@ public class Assignments {
         return maxProfit;
     }
 
-// Question 5 :
-// Split the given array into K sub-arrays
-// We have an Array[] of N elements and a number K. ( 1 <= K <= N ) . Split the given array into K
-// subarrays (they must cover all the elements). The maximum subarray sum achievable out of K
-// subarrays formed must be the minimum possible. Find that possible subarray sum.
-// Sample Input 1 :Array[] = {1, 1, 2} K = 2
-// Sample Output 1 : 2
-// Sample Input 2 : Array[] = {1, 2, 3, 4}, K = 3
-// Sample Output 2 : 4
-    
+    // Question 5 :
+    // Split the given array into K sub-arrays
+    // We have an Array[] of N elements and a number K. ( 1 <= K <= N ) . Split the
+    // given array into K
+    // subarrays (they must cover all the elements). The maximum subarray sum
+    // achievable out of K
+    // subarrays formed must be the minimum possible. Find that possible subarray
+    // sum.
+    // Sample Input 1 :Array[] = {1, 1, 2} K = 2
+    // Sample Output 1 : 2
+    // Sample Input 2 : Array[] = {1, 2, 3, 4}, K = 3
+    // Sample Output 2 : 4
 
     public static void main(String[] args) {
         String str = "LRRRRLLRLLRL";
         System.out.println(maxBalancedStringPartitions(str));
 
         int L = -3, R = 3, K = 1;
-        System.out.println("The " + K + "th largest odd number in the range " + L + " to " + R + " is "+ kthLargestOddNumber(L, R, K));
-        
+        System.out.println("The " + K + "th largest odd number in the range " + L + " to " + R + " is "
+                + kthLargestOddNumber(L, R, K));
+
         int N = 5, Ki = 42;
-        System.out.println("The lexicographically smallest string of length " + N + " and sum " + Ki + " is " + lexicographicallySmallestString(N, Ki));
-        
-        int[] prices = {7, 1, 5, 3, 6, 4};
+        System.out.println("The lexicographically smallest string of length " + N + " and sum " + Ki + " is "
+                + lexicographicallySmallestString(N, Ki));
+
+        int[] prices = { 7, 1, 5, 3, 6, 4 };
         System.out.println("The maximum profit possible is " + bestTimeToBuyAndSellStock(prices));
     }
 }
