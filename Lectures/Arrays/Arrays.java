@@ -1,6 +1,3 @@
-import java.util.*;
-
-
 public class Arrays {
 
     public static int linearsearch(int list[],int key){

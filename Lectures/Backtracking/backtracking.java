@@ -127,8 +127,8 @@ public class backtracking {
 
     public static void main(String[] args) {
         int arr[] = new int[5];
-        // changeArr(arr, 0, 1);
-        // printArr(arr);
+        changeArr(arr, 0, 1);
+        printArr(arr);
 
         System.out.println("Permutation:");
         System.out.println("Permutations of 'abc':");

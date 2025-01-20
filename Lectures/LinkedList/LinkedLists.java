@@ -1,4 +1,3 @@
-import java.util.*;
 public class LinkedLists{
     public static class Node {
         int data;

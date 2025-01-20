@@ -1,7 +1,5 @@
 
 //Given n non-negative integers representing an elevation map where the width of each bar is 1, compute how much water it can trp after Raining.
-import java.util.*;
-
 public class TrappedRainWater {
     public static int trappedRainwater(int arr[]) {
         int n = arr.length;
