@@ -23,7 +23,7 @@
   <li>Clone this repository using Git:</li>
   <pre><code>git clone https://github.com/ankitkatole/Java_DSA.git</code></pre>
   <li>Navigate to the project folder:</li>
-  <pre><code>cd Java_DSA</code></pre>
+  <pre><code>cd Java_DSA/Lectures</code></pre>
   <li>Run the Java files using your preferred IDE (such as IntelliJ IDEA, Eclipse, or VSCode) or from the command line:</li>
   <pre><code>javac filename.java</code></pre>
   <pre><code>java filename</code></pre>
