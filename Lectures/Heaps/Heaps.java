@@ -7,7 +7,7 @@ public class Heaps {
             this.rank = rank;
             this.name = name;
         }
-        @Override
+        @Override   
         public int compareTo(Student o){
             return this.rank - o.rank;
         }
@@ -24,5 +24,15 @@ public class Heaps {
         // }
 
         
+        PriorityQueue<Student> pq = new PriorityQueue<>(Comparator.reverseOrder());
+        pq.add(new Student(10, "A"));
+        pq.add(new Student(20, "B"));
+        pq.add(new Student(15, "C"));
+        pq.add(new Student(30, "D"));
+        while(!pq.isEmpty()){
+            Student s = pq.peek();
+            System.out.println(s.rank + " " + s.name);
+            pq.remove();
+        }
     }
 }
