@@ -73,7 +73,44 @@ public class HSQuestions {
      * arr = {15,-2,2,-8,1,7,10,23}
      * Output: 5
     */
+
+    public static int largestSubarrayWith0Sum(int arr[]){
+        HashMap<Integer,Integer> map = new HashMap<>();
+        int sum = 0;
+        int len = 0;
+        for(int j = 0;j<arr.length;j++){
+            sum += arr[j];
+            if(map.containsKey(sum)){
+                len = Math.max(len,j-map.get(sum));
+            }else{
+                map.put(sum,j);
+            }
+        }
+        return len;
+    }
     
+    /*
+     * Question 5: SubArray Sum Equals K
+     * arr = {1,2,3} K = 3
+     * Output: 2 [(1,2),(3)]
+     * arr = {1,1,2} K = 2
+     * Output: 2 [(1,1),(2)]
+     */
+
+     public static int subArraySumK(int arr[],int k){
+        HashMap<Integer,Integer> map = new HashMap<>();
+        int sum = 0;
+        int ans = 0;
+        map.put(0,1);
+        for(int j : arr){
+            sum += j;
+            if(map.containsKey(sum-k)){
+                ans += map.get(sum-k);
+            }
+            map.put(sum,map.getOrDefault(sum,0)+1);
+        }
+        return ans;
+     }
     public static void main(String[] args) {
         System.out.println("Question 1: Count Distinct Elements");
         int arr[] = {4,3,2,5,6,7,3,4,2,1};
@@ -94,5 +131,20 @@ public class HSQuestions {
         System.out.print("*");
         findItinerary(tickets);
         System.out.println("-------------------------------");
+        System.out.println("Question 4: Largest Subarray with 0 sum");
+        int arr3[] = {15,-2,2,-8,1,7,10,23};
+        System.out.println("Array: "+Arrays.toString(arr3));
+        System.out.println(largestSubarrayWith0Sum(arr3));
+        int arr4[] = {1,2,3};
+        System.out.println("Array: "+Arrays.toString(arr4));
+        System.out.println(largestSubarrayWith0Sum(arr4));
+        System.out.println("-------------------------------");
+        System.out.println("Question 5: SubArray Sum Equals K");
+        int arr5[] = {10,2,-2,-20,10};
+        System.out.println("Array: "+Arrays.toString(arr5));
+        System.out.println(subArraySumK(arr5,-10));
+        int arr6[] = {1,1,1};
+        System.out.println("Array: "+Arrays.toString(arr6));
+        System.out.println(subArraySumK(arr6,2));
     }
 }
