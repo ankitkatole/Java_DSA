@@ -97,25 +97,31 @@ public class Problems {
         }
         return true;
      }
+
+     
+
     public static void main(String[] args) {
-        String arr[] = { "b" };
-        String key = "a";
-        for (String word : arr) {
-            insert(word);
-        }
-        if (wordbreak(key)) {
-            System.out.println("Yes");
-        } else {
-            System.out.println("No");
-        }
-        System.out.println("----------------------");
+        // String arr[] = { "b" };
+        // String key = "a";
+        // for (String word : arr) {
+        //     insert(word);
+        // }
+        // if (wordbreak(key)) {
+        //     System.out.println("Yes");
+        // } else {
+        //     System.out.println("No");
+        // }
+        // System.out.println("----------------------");
         
-        String words[] = {"apple","app","mango","man","woman"};
-        for(String word : words) {
-            insert(word);
-        }
-        System.out.println("Starts with app: " + startsWith("app")); // true
-        System.out.println("Starts with moon: " + startsWith("moon")); // false
-        System.out.println("Starts with mai: " + startsWith("mai")); // false
+        // String words[] = {"apple","app","mango","man","woman"};
+        // for(String word : words) {
+        //     insert(word);
+        // }
+        // System.out.println("Starts with app: " + startsWith("app")); // true
+        // System.out.println("Starts with moon: " + startsWith("moon")); // false
+        // System.out.println("Starts with mai: " + startsWith("mai")); // false
+
+        System.out.println("----------------------");
+
     }
 }
