@@ -41,17 +41,14 @@ public class Graph2 {
         for (int i = 0; i < graph.length; i++) {
             graph[i] = new ArrayList<>();
         }
-        graph[0].add(new Edge(0, 1));
-        graph[0].add(new Edge(0, 2));
+        
+        graph[2].add(new Edge(2,3));
+        graph[3].add(new Edge(3,1));
+        graph[4].add(new Edge(4,0));
+        graph[4].add(new Edge(4,1));
+        graph[5].add(new Edge(5,0));
+        graph[5].add(new Edge(5,2));
 
-        graph[1].add(new Edge(1, 0));
-        graph[1].add(new Edge(1, 3));
-
-        graph[2].add(new Edge(2, 0));
-        graph[2].add(new Edge(2, 3));
-
-        graph[3].add(new Edge(3, 1));
-        graph[3].add(new Edge(3, 2));
     }
 
     public static boolean detectCycle(ArrayList<Edge>[] graph) {
@@ -100,8 +97,7 @@ public class Graph2 {
                             q.add(e.dest);
                         } else if (col[e.dest] == col[curr]) {
                             return false;
-                        } 
-                        
+                        }
                     }
                 }
             }
@@ -109,13 +105,70 @@ public class Graph2 {
         return true;
     }
 
+    public static boolean isCycleDir(ArrayList<Edge>[] graph){
+        boolean vis[] = new boolean[graph.length];
+        boolean Stack[] = new boolean[graph.length];
+        for(int i = 0;i<graph.length;i++){
+            if(!vis[i]){
+                if(isCycleDirUtil(graph,vis,Stack,i)){
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    public static boolean isCycleDirUtil(ArrayList<Edge>[] graph, boolean[] vis,boolean[] stack,int curr){
+        vis[curr] = true;
+        stack[curr] = true;
+        for(int i =0; i<graph[curr].size();i++){
+            Edge e = graph[curr].get(i);
+            if(stack[e.dest]){
+                return true;
+            }
+            if(!vis[e.dest] && isCycleDirUtil(graph,vis,stack,e.dest)){
+                return true;
+            }
+        }
+        stack[curr] = false;
+        return false;
+    }
+
+    public static void topSort(ArrayList<Edge>[] graph){
+        boolean vis[] = new boolean[graph.length];
+        Stack<Integer> st = new Stack<>();
+        for(int i = 0;i<graph.length;i++){
+            if(!vis[i]){
+                topSortUtil(graph,vis,st,i);
+            }
+        }
+        while(!st.isEmpty()){
+            System.out.print(st.pop() + " ");
+        }
+    }
+
+    public static void topSortUtil(ArrayList<Edge>[] graph, boolean[] vis, Stack<Integer> st, int curr){
+        vis[curr] = true;
+        for(int i = 0; i<graph[curr].size();i++){
+            Edge e = graph[curr].get(i);
+            if(!vis[e.dest]){
+                topSortUtil(graph,vis,st,e.dest);
+            }
+        }
+        st.push(curr);
+    }
+
     public static void main(String[] args) {
 
-        int V = 4; // Number of vertices
+        int V = 6; // Number of vertices
         @SuppressWarnings("unchecked")
         ArrayList<Edge>[] graph = new ArrayList[V];
         createGraph(graph);
         System.out.println("Cycle Detection: " + detectCycle(graph));
         System.out.println("Bipartite Check: " + isBipartile(graph));
+        System.out.println("Directed Cycle Detection: " + isCycleDir(graph));
+        System.out.println("Topological Sort: ");
+        topSort(graph);
+        System.out.println();
     }
 }
