@@ -58,7 +58,7 @@ public class CheapestFlights {
 
         while(!q.isEmpty()){
             Info curr = q.remove();
-            if(curr.stops > k) continue; // If stops exceed k, skip this path
+            if(curr.stops > k) break; // If we exceed the number of stops, we stop processing this path
 
             for(int i = 0; i<graph[curr.v].size();i++){
                 Edge e = graph[curr.v].get(i);
@@ -66,7 +66,7 @@ public class CheapestFlights {
                 int v = e.dest;
                 int wt = e.wt;
 
-                if(dist[u] != Integer.MAX_VALUE && dist[u] + wt < dist[v] && curr.stops <= k) {
+                if(curr.cost + wt < dist[v] && curr.stops <= k) {
                     dist[v] = dist[u] + wt;
                     q.add(new Info(v, dist[v], curr.stops + 1));
                 }
