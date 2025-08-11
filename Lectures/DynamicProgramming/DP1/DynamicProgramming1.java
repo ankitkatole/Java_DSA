@@ -22,7 +22,23 @@ public class DynamicProgramming1 {
         memo.put(n, result);
         return result;
     }
+
+    public static int fibTab(int n){
+        if(n == 0 || n == 1){
+            return n;
+        }
+        int[] dp =  new int[n+1];
+        dp[0] = 0;
+        dp[1] = 1;
+        for(int i = 2; i <= n; i++){
+            dp[i] = dp[i-1] + dp[i-2];
+        }
+        return dp[n];
+    }
+
     public static void main(String[] args) {
+
+        //Fibonacci with and without Memoization
         long startTime2 = System.currentTimeMillis();
         for(int i = 0; i<45;i++){
             System.out.print(fibbMemo(i) + " ");
@@ -38,6 +54,14 @@ public class DynamicProgramming1 {
         System.out.println();
         System.out.println("Time taken by fibb loop: " + (endTime1 - startTime1) + " ms");
 
+        // Fibonacci with Tabulation
+        long startTime3 = System.currentTimeMillis();
+        for(int i = 0; i<45;i++){
+            System.out.print(fibTab(i) + " ");
+        }
+        long endTime3 = System.currentTimeMillis();
+        System.out.println();
+        System.out.println("Time taken by fibTab loop: " + (endTime3 - startTime3) + " ms");
 
     }
 }
