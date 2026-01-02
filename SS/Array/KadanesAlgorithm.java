@@ -28,14 +28,64 @@ Explanation:
 import java.util.*;
 
 public class KadanesAlgorithm {
-/*Brute Force
-Algorithm
-Iterate through the array with variable i, which represents the starting index of each subarray. The possible values for i range from 0 to n-1, where n is the size of the array.
-Inside the first loop, run another loop with variable j that represents the ending index of the subarray. For each i, j can range from i to n-1.
-For each subarray defined by i and j, iterate through its elements to calculate the sum. Maintain a variable, max, to store the maximum sum encountered so far during the iteration.
-At each step, compare the current subarray sum with the current max value. If the current sum is greater, update the max value with the new sum.
-Finally, after completing all iterations, return the max variable, which holds the maximum sum of any subarray.
-*/
+
+    public static int maxSubArray(int[] nums) {
+        int max = Integer.MIN_VALUE;
+        
+
+        int n = nums.length;
+        if (n == 0) {
+            return 0;
+        }
+        if (n == 1) {
+            return nums[0];
+        }
+        int sum = 0;
+        for (int i = 0; i < n; i++) {
+            sum += nums[i];
+            if (sum > max) {
+                max = sum;
+            }
+            if (sum < 0) {
+                sum = 0;
+            }
+        }
+        return max;
+    }
+
+    public static void main(String[] args) {
+        // Test Case 1: Standard case with positive and negative numbers
+        int[] nums1 = {-2, 1, -3, 4, -1, 2, 1, -5, 4};
+        System.out.println("Test Case 1: " + maxSubArray(nums1));  // Expected output: 6
+
+        // Test Case 2: Array with all positive numbers
+        int[] nums2 = {1, 2, 3, 4, 5};
+        System.out.println("Test Case 2: " + maxSubArray(nums2));  // Expected output: 15
+
+        // Test Case 3: Array with all negative numbers
+        int[] nums3 = {-1, -2, -3, -4};
+        System.out.println("Test Case 3: " + maxSubArray(nums3));  // Expected output: -1
+
+        // Test Case 4: Single element array (positive)
+        int[] nums4 = {3};
+        System.out.println("Test Case 4: " + maxSubArray(nums4));  // Expected output: 3
+
+        // Test Case 5: Single element array (negative)
+        int[] nums5 = {-3};
+        System.out.println("Test Case 5: " + maxSubArray(nums5));  // Expected output: -3
+
+        // Test Case 6: Empty array
+        int[] nums6 = {};
+        System.out.println("Test Case 6: " + maxSubArray(nums6));  // Expected output: 0
+
+        // Test Case 7: Array with zero values
+        int[] nums7 = {0, 0, 0, 0, 0};
+        System.out.println("Test Case 7: " + maxSubArray(nums7));  // Expected output: 0
+
+        // Test Case 8: Array with both large positive and negative numbers
+        int[] nums8 = {1, -2, 3, 10, -4, 7, 2, -5};
+        System.out.println("Test Case 8: " + maxSubArray(nums8));  // Expected output: 18 (subarray [3, 10, -4, 7, 2])
+    }
 
 
 }
